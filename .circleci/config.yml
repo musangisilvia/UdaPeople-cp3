@@ -144,7 +144,7 @@ jobs:
       - run:
           name: Scan Backend
           command: |
-            cd backend5
+            cd backend
             npm install
             npm audit fix --audit-level=critical --force
       - slack/notify:
