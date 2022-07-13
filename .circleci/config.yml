@@ -282,7 +282,7 @@ jobs:
       - run:
           name: Get backend url
           command: |
-            export BACKEND_IP=(cat env.txt)
+            export BACKEND_IP=cat env.txt
             
             export API_URL="http://${BACKEND_IP}:3030"
             echo "${API_URL}"
