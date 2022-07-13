@@ -262,7 +262,7 @@ jobs:
           paths: [backend/node_modules]
           key: backend-build
       - revert-migrations: 
-          circle_workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}"     
+          workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}"     
 
   deploy-frontend:
     docker:
@@ -298,9 +298,9 @@ jobs:
             tar -czvf artifact-"${CIRCLE_WORKFLOW_ID:0:7}".tar.gz dist
             aws s3 cp dist s3://udapeople-${CIRCLE_WORKFLOW_ID:0:7} --recursive
       - destroy-environment:
-          circle_workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}"  
+          workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}"  
       - revert-migrations: 
-          circle_workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}"    
+          workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}"    
                     
   deploy-backend:
     docker:
@@ -340,7 +340,7 @@ jobs:
           paths: [backend/node_modules]
           key: backend-build
       - destroy-environment:
-          circle_workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}"
+          workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}"
 
 #   smoke-test:
 #     docker:
