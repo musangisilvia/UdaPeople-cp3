@@ -403,7 +403,7 @@ jobs:
           command: |
             # your code here
             yum -y install tar gzip
-      - run:	
+      - run:
           name: Update cloudfront distribution
           command: |
             # your code here
