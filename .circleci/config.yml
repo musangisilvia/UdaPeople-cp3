@@ -19,8 +19,8 @@ commands:
               # Your code here
               echo "Destroying: << parameters.workflow_id >> "
               aws s3 rm s3://udapeople-<< parameters.workflow_id >> --recursive
-              aws cloudformation delete-stack --stack-name backend-<< parameters.workflow_id >>
-              aws cloudformation delete-stack --stack-name frontend-<< parameters.workflow_id >>
+              aws cloudformation delete-stack --stack-name udapeople-backend-<< parameters.workflow_id >>
+              aws cloudformation delete-stack --stack-name udapeople-frontend-<< parameters.workflow_id >>
 
     revert-migrations:
       description: Revert the last migration if successfully run in the current workflow.
@@ -361,7 +361,7 @@ jobs:
           name: Get backend url and smoke
           command: |
             # your code here
-            export BACKEND_IP=$(cat env.txt)
+            export BACKEND_IP=$(cat ~/env.txt)
             export API_URL="http://${BACKEND_IP}:3030"
             echo "${API_URL}"
             if curl "${API_URL}/api/status" | grep "ok"
