@@ -457,7 +457,7 @@ jobs:
             name: Remove old stacks and files
             command: |
               cat ~/prevWorkflow_ID.txt
-              export prevWorkflow_ID=$cat ~/prevWorkflow_ID.txt)
+              export prevWorkflow_ID=$(cat ~/prevWorkflow_ID.txt)
               echo ${preWorkflow_ID}
               if [[ "${CIRCLE_WORKFLOW_ID:0:7}" != "${prevWorkflow_ID}" ]]
               then
