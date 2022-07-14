@@ -361,7 +361,7 @@ jobs:
           name: Get backend url and smoke
           command: |
             # your code here
-            export BACKEND_IP=$(cat inv.txt)
+            export BACKEND_IP=$(cat env.txt)
             export API_URL="http://${BACKEND_IP}:3030"
             echo "${API_URL}"
             if curl "${API_URL}/api/status" | grep "ok"
