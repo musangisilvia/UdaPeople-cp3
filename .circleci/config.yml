@@ -458,13 +458,16 @@ jobs:
               then
                 # your code here
                 echo "------------------------------Delete Confirmed----------------------"
-                aws s3 rm "s3://${prevWorkflow_ID}" --recursive
+                aws s3 rm "s3://udapeople-${prevWorkflow_ID}" --recursive
                 aws cloudformation delete-stack --stack-name "udapeople-backend-${prevWorkflow_ID}"
                 aws cloudformation delete-stack --stack-name "udapeople-frontend-${prevWorkflow_ID}"
               else
                 echo "------------------------------Cannot cleanup------------------------"
               fi
-            
+      - destroy-environment:
+          workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}"
+      - revert-migrations:
+          workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}"
 
 workflows:
   default:
