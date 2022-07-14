@@ -32,7 +32,7 @@ commands:
             name: Revert migrations
             when: on_fail
             command: |
-              SUCCESS=$(curl --insecure  https://kvdb.io/P5thQCXKuMdbXnoXdEHU3o/migration_<< parameters.workflow_id >>)
+              SUCCESS=$(curl --insecure  https://kvdb.io/E8AiWTZWAcYFkXwssoxdNB/migration_<< parameters.workflow_id >>)
               # Logic for reverting the database state
               if (( $SUCCESS == 1 ));
               then
@@ -380,9 +380,9 @@ jobs:
             if curl -s ${URL} | grep "Welcome"
             then
                 # Change this to 0 after the job fails
-              return 0
-            else
               return 1
+            else
+              return 0
             fi            
       - destroy-environment:
           workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}"
