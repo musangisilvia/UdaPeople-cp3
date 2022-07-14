@@ -66,8 +66,8 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - checkout
-      - restore_cache:
-          keys: [backend-build]
+      # - restore_cache:
+      #     keys: [backend-build]
       - run:
           name: Back-end build
           command: |
@@ -258,9 +258,9 @@ jobs:
                   # If you are using kvdb.io, generate the bucket ID "P5thQCXKuMdbXnoXdEHU3o" in your local terminal first
                   curl -k https://kvdb.io/E8AiWTZWAcYFkXwssoxdNB/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
               fi
-      - save_cache:
-          paths: [backend/node_modules]
-          key: backend-build
+      # - save_cache:
+      #     paths: [backend/node_modules]
+      #     key: backend-build
       - revert-migrations: 
           workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}"     
 

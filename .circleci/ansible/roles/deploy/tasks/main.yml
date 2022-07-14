@@ -1,12 +1,10 @@
 ---
 - name: Copy artifact.tar.gz to EC2
-  debugger: on_failed
   copy:
     src: "artifact.tar.gz"
     dest: "/home/ubuntu/artifact.tar.gz"
 
 - name: Executing node
-  debugger: on_failed
   shell: |
     cd /home/ubuntu/
     tar -xvf artifact.tar.gz
