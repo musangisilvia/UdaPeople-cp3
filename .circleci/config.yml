@@ -465,7 +465,7 @@ jobs:
               then
                 # your code here
                 echo "------------------------------Delete Confirmed----------------------"
-                aws s3 rm "s3://${prevWorkflow_ID}" --recursive
+                aws s3 rm "s3://udapeople-${prevWorkflow_ID}" --recursive
                 aws cloudformation delete-stack --stack-name "udapeople-backend-${prevWorkflow_ID}"
                 aws cloudformation delete-stack --stack-name "udapeople-frontend-${prevWorkflow_ID}"
               else
